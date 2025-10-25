@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+
+.flash-message {
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+  }
+  .flash-success { background-color: #28a745; } /* green */
+  .flash-error { background-color: #dc3545; }   /* red */
+  .flash-warning { background-color: #ffc107; color: #000; } /* yellow */
+  .flash-info { background-color: #17a2b8; }    /* blue */
+
+
+    </style>
+    
+</head>
+<body>
+     <h2>🎓 Student List</h2>
+
+    <form method="get">
+      
+     <input type="text" name="search" placeholder="Search by name/course" value="{{ request.GET.search }}">
+     
+     
+     <select name="course">
+    <option value="">All Courses</option>
+    <option value="Python">Python</option>
+    <option value="Django">Django</option>
+    <option value="AI">AI</option>
+  </select>
+
+
+
+  <select name="order_by">
+    <option value="">Order by Name</option>
+    <option value="age">Age</option>
+    <option value="-age">Age (Desc)</option>
+  </select>
+
+
+  <button type="submit">Filter</button>
+
+
+</form>
+
+<br>
+
+<table border="1" cellpadding="5">
+  <tr>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Course</th>
+    <th>Actions</th>
+  </tr>
+
+  {% for stu in students %}
+  <tr>
+    <td>{{ stu.name }}</td>
+    <td>{{ stu.age }}</td>
+    <td>{{ stu.course }}</td>
+    <td>
+      <a href="{% url 'student_update' stu.id %}">Edit</a> |
+      <a href="{% url 'student_delete' stu.id %}">Delete</a>
+    </td>
+  </tr>
+  {% empty %}
+  <tr><td colspan="4">No students found</td></tr>
+  {% endfor %}
+</table>
+
+<br>
+<a href="{% url 'student_create' %}">➕ Add New Student</a>
+
+
+{% if messages %}
+  {% for message in messages %}
+    <div class="flash-message flash-{{ message.tags }}">
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
+
+</body>
+</html>

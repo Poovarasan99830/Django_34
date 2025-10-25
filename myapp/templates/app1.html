@@ -1,0 +1,31 @@
+{% extends 'home.html' %}
+
+  {% block title %}
+    <h1>Welcome to App1 Page</h1>
+    {% endblock %}
+
+
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>This is App1 Page</h1>
+
+     {% for student in students %}
+  {{ student.name }} - {{ student.age }} - {{ student.course }}
+{% endfor %}
+
+
+
+</body>
+</html>
+
+{% endblock %}

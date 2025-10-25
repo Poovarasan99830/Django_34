@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'sty/one.css' %}">
+</head>
+<body>
+  
+    <h1>Welcome to Student Page</h1>
+   <p>{{ student }}</p>
+   <li>{{student.name}}</li>
+   <li>{{student.roll}}</li>
+   <li>{{student.course}}</li>
+
+
+   <h1>looping</h1>
+
+   <h1>{{courses}}</h1>
+
+
+   {% for i in courses %}
+       <li>{{ i }}</li>
+   {% endfor %}
+ 
+
+   <h1>conditions</h1>
+
+
+
+    <h1>Your mark is : {{ mark }}</h1>
+  
+
+
+   {% if mark > 80 %}
+         <h1 style="color: green">You are passed with A grade</h1>
+    {% elif mark > 60 and mark <= 80 %}
+         <h1 style="color: blue">You are passed with B grade</h1>
+    {% elif mark > 40 and mark <= 60 %}
+         <h1 style="color: orange">You are passed with C grade</h1>
+    {% else %}
+         <h1 style="color: red">You are failed</h1>
+
+    {% endif %}
+
+
+
+
+</body>
+</html>

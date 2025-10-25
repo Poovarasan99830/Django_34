@@ -1,0 +1,13 @@
+{% extends 'home.html' %}
+
+{% block title %}
+    <h1> welcome to Product Detail</h1>
+{% endblock %}
+
+{% block content %}
+    <h1>Product Detail</h1>
+    <ul>
+        <li>Product ID : {{ get_product}}</li>
+        <li>{{ get_product.id }} - {{ get_product.name }} - {{ get_product.price }}</li>
+    </ul>
+{% endblock %}
