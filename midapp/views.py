@@ -11,3 +11,7 @@ def index(request):
     print('Index called and Entered in Airport', request.GET)
     return JsonResponse({"message": "hi hello  welcome  in airport...!"})
 
+
+
+def new_function():
+    print("this  function write by team A...")
